@@ -35,7 +35,17 @@
           # system.
 
           # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
-          packages.default = pkgs.hello;
+          packages = {
+            default = pkgs.callPackage ./. { };
+            i3-cycles = pkgs.callPackage ./. { };
+          };
+
+          checks = {
+            i3-cycles = pkgs.callPackage ./test.nix {
+              inherit (pkgs) testers;
+              inherit (self'.packages) i3-cycles;
+            };
+          };
         };
       flake = {
         # The usual flake attributes can be defined here, including system-
