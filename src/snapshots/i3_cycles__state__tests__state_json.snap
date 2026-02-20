@@ -1,0 +1,14 @@
+---
+source: src/state.rs
+expression: cycles.to_json()
+---
+{
+  "cycles": {
+    "default": [
+      "1",
+      "2"
+    ]
+  },
+  "active_cycle": "default",
+  "current_position": 0
+}

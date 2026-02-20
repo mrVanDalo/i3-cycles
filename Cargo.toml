@@ -1,0 +1,40 @@
+[package]
+name = "i3-cycles"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+
+[dev-dependencies]
+insta = { version = "1.40", features = ["json"] }
+
+[[bin]]
+name = "i3-cycle-daemon"
+path = "src/bin/i3-cycle-daemon.rs"
+
+[[bin]]
+name = "i3-cycle-next"
+path = "src/bin/i3-cycle-next.rs"
+
+[[bin]]
+name = "i3-cycle-toggle"
+path = "src/bin/i3-cycle-toggle.rs"
+
+[[bin]]
+name = "i3-cycle-list"
+path = "src/bin/i3-cycle-list.rs"
+
+[[bin]]
+name = "i3-cycle-select"
+path = "src/bin/i3-cycle-select.rs"
+
+[[bin]]
+name = "i3-cycle-status"
+path = "src/bin/i3-cycle-status.rs"
+
+[lib]
+name = "i3_cycles"
+path = "src/lib.rs"

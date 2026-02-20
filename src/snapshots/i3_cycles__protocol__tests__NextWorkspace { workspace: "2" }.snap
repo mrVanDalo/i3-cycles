@@ -1,0 +1,9 @@
+---
+source: src/protocol.rs
+expression: response
+---
+{
+  "NextWorkspace": {
+    "workspace": "2"
+  }
+}
