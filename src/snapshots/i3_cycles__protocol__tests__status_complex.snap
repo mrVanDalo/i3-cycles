@@ -1,0 +1,9 @@
+---
+source: src/protocol.rs
+expression: response
+---
+{
+  "Status": {
+    "json": "{\"active_cycle\":\"work\",\"cycles\":[{\"name\":\"work\",\"workspaces\":[\"1\",\"2\"],\"position\":0}]}"
+  }
+}

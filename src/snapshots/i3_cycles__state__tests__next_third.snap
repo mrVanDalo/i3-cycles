@@ -2,4 +2,4 @@
 source: src/state.rs
 expression: next3
 ---
-"1"
+"3"

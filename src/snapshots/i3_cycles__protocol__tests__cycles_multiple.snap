@@ -1,0 +1,13 @@
+---
+source: src/protocol.rs
+expression: response
+---
+{
+  "Cycles": {
+    "names": [
+      "default",
+      "work",
+      "personal"
+    ]
+  }
+}

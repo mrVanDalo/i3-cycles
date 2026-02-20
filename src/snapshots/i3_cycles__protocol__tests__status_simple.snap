@@ -1,0 +1,9 @@
+---
+source: src/protocol.rs
+expression: response
+---
+{
+  "Status": {
+    "json": "{\"active_cycle\":\"default\",\"cycles\":[]}"
+  }
+}

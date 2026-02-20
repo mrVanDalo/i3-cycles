@@ -1,0 +1,9 @@
+---
+source: src/protocol.rs
+expression: response
+---
+{
+  "Error": {
+    "message": "Error: file 'test.txt' not found! (code: 404)"
+  }
+}

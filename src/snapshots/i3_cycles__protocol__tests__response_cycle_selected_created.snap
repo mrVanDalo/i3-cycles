@@ -1,0 +1,9 @@
+---
+source: src/protocol.rs
+expression: response
+---
+{
+  "CycleSelected": {
+    "action": "Created"
+  }
+}

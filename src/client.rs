@@ -12,13 +12,13 @@ pub fn send_request(request: Request) -> Result<Response, String> {
     let request_json = serde_json::to_string(&request)
         .map_err(|e| format!("Failed to serialize request: {}", e))?;
 
-    writeln!(stream, "{}", request_json)
-        .map_err(|e| format!("Failed to send request: {}", e))?;
+    writeln!(stream, "{}", request_json).map_err(|e| format!("Failed to send request: {}", e))?;
 
     let mut reader = BufReader::new(stream);
     let mut line = String::new();
 
-    reader.read_line(&mut line)
+    reader
+        .read_line(&mut line)
         .map_err(|e| format!("Failed to read response: {}", e))?;
 
     let response: Response = serde_json::from_str(&line)

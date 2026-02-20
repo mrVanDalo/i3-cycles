@@ -1,0 +1,9 @@
+---
+source: src/protocol.rs
+expression: response
+---
+{
+  "Error": {
+    "message": "This is a very long error message that explains in detail what went wrong and provides guidance on how to fix the issue"
+  }
+}

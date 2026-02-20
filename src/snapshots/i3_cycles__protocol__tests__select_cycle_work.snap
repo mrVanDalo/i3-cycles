@@ -1,0 +1,9 @@
+---
+source: src/protocol.rs
+expression: request
+---
+{
+  "SelectCycle": {
+    "name": "work"
+  }
+}

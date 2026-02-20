@@ -1,0 +1,5 @@
+---
+source: src/protocol.rs
+expression: "\"Empty string is valid for workspace field\""
+---
+Empty string is valid for workspace field

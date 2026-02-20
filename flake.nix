@@ -45,12 +45,28 @@
               inherit (pkgs) testers;
               inherit (self'.packages) i3-cycles;
             };
+            daemon-integration = pkgs.callPackage ./tests/nixos/daemon_integration_test.nix {
+              inherit (pkgs) testers;
+              inherit (self'.packages) i3-cycles;
+            };
           };
         };
       flake = {
-        # The usual flake attributes can be defined here, including system-
-        # agnostic ones like nixosModule and system-enumerating ones, although
-        # those are more easily expressed in perSystem.
+        # Overlay that can be imported in other flakes
+        overlays = {
+          default = final: prev: {
+            i3-cycles = final.callPackage ./. { };
+          };
+          i3-cycles = final: prev: {
+            i3-cycles = final.callPackage ./. { };
+          };
+        };
+
+        # Home Manager module export
+        hmModules = {
+          default = import ./nix/hm-module.nix;
+          i3-cycles = import ./nix/hm-module.nix;
+        };
       };
     };
 }

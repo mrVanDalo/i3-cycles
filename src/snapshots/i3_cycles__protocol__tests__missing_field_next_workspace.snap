@@ -1,0 +1,5 @@
+---
+source: src/protocol.rs
+expression: result.unwrap_err().to_string()
+---
+missing field `workspace` at line 1 column 20

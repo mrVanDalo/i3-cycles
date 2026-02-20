@@ -3,12 +3,15 @@ source: src/state.rs
 expression: cycles.to_json()
 ---
 {
-  "cycles": {
-    "default": [
-      "1",
-      "2"
-    ]
+  "cycle_data": {
+    "default": {
+      "workspaces": [
+        "1",
+        "2"
+      ],
+      "position": 0,
+      "count": 2
+    }
   },
-  "active_cycle": "default",
-  "current_position": 0
+  "active_cycle": "default"
 }

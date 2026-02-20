@@ -1,0 +1,5 @@
+---
+source: src/protocol.rs
+expression: result.unwrap_err().to_string()
+---
+unknown variant `next`, expected one of `Next`, `Toggle`, `ListCycles`, `SelectCycle`, `Status` at line 1 column 6

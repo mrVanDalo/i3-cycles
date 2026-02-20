@@ -1,0 +1,19 @@
+---
+source: tests/edge_cases.rs
+expression: json
+---
+{
+  "cycle_data": {
+    "control_test": {
+      "workspaces": [
+        "with\ttab",
+        "with\nnewline",
+        "with\\backslash",
+        "with\"quote\""
+      ],
+      "position": 0,
+      "count": 4
+    }
+  },
+  "active_cycle": "control_test"
+}
