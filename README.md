@@ -16,9 +16,49 @@ Both cycles share `chat` and `firefox`, but have distinct IDE and terminal
 workspaces. When you cycle through "nixos", you'll jump between nixos-specific
 workspaces while still being able to access shared ones.
 
-## Installation
+## Without NixOS
 
-### Using Nix Flakes
+### Installation
+
+```bash
+cargo build --release
+sudo cp target/release/i3-cycle-* /usr/local/bin/
+```
+
+Requirements:
+
+- Rust toolchain
+- i3wm
+- `jq` (for workspace detection)
+- `dmenu` or `rofi` (for cycle selection)
+
+### Configuration
+
+1. Start the daemon on login (add to `~/.xinitrc` or your window manager's
+   autostart):
+   ```bash
+   exec --no-startup-id i3-cycle-daemon
+   ```
+
+2. Add to `~/.config/i3/config`:
+   ```bash
+   # Cycle to next workspace in current cycle
+   bindsym $mod+Escape exec i3-msg workspace "$(i3-cycle-next)"
+
+   # Add/remove workspace from cycle
+   bindsym $mod+a exec i3-cycle-toggle "$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused) | .name')"
+
+   # Select/create cycle (with dmenu or rofi)
+   bindsym $mod+Tab exec i3-cycle-list | dmenu -p 'Cycle' | xargs i3-cycle-select
+   ```
+
+The daemon uses Unix socket at `$XDG_RUNTIME_DIR/i3-cycles.sock` (or `/tmp`).
+
+## With NixOS
+
+### Installation
+
+#### Using Nix Flakes
 
 Add to your flake inputs and import the overlay:
 
@@ -32,7 +72,7 @@ Add to your flake inputs and import the overlay:
 }
 ```
 
-### Home Manager Module
+#### Home Manager Module
 
 ```nix
 {
@@ -47,7 +87,7 @@ Add to your flake inputs and import the overlay:
 
 The daemon starts automatically via systemd user service.
 
-## Configuration
+### Configuration
 
 Example i3 keybindings:
 
